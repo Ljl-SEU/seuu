@@ -1,0 +1,1069 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>❤ 恋爱打卡 ❤</title>
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&amp;family=Noto+Sans+SC:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --primary: #FF6B8A;
+  --primary-dark: #E55A7A;
+  --primary-light: #FF8FA8;
+  --bg: #FFF0F3;
+  --card: #FFFFFF;
+  --accent: #FFD4D9;
+  --text: #4A2C3A;
+  --text-secondary: #8B6B7B;
+  --text-light: #B895A5;
+  --shadow: 0 2px 12px rgba(255, 107, 138, 0.12);
+  --shadow-hover: 0 4px 20px rgba(255, 107, 138, 0.18);
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+
+body {
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ===== HEADER ===== */
+.header {
+  background: linear-gradient(135deg, #FF6B8A 0%, #FF8FA8 40%, #FFB6C9 100%);
+  padding: 40px 20px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -40px; left: -40px;
+  width: 180px; height: 180px;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; right: -30px;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.header-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.header-title {
+  font-family: 'ZCOOL KuaiLe', 'Noto Sans SC', cursive;
+  font-size: 2.2rem;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(180, 50, 80, 0.3);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.header-title .heart-deco {
+  display: inline-block;
+  animation: heartbeat 1.4s ease-in-out infinite;
+}
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.25); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.15); }
+  56% { transform: scale(1); }
+}
+.header-date {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.9);
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+.header-deco {
+  margin-top: 10px;
+  font-size: 1.4rem;
+  letter-spacing: 6px;
+  opacity: 0.6;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px 20px;
+  margin-bottom: 20px;
+  transition: box-shadow 0.2s;
+}
+.card:hover {
+  box-shadow: var(--shadow-hover);
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
+}
+.card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-title .icon { font-size: 1.2rem; }
+
+/* ===== RECORD ITEMS ===== */
+.record-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  background: #FFFAFB;
+  border-radius: var(--radius-sm);
+  margin-bottom: 10px;
+  border: 1px solid #FFEEF0;
+  transition: background 0.15s;
+}
+.record-item:hover {
+  background: #FFF5F7;
+}
+.record-badge {
+  flex-shrink: 0;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #fff;
+  background: var(--primary);
+  white-space: nowrap;
+  margin-top: 2px;
+}
+.record-body {
+  flex: 1;
+  min-width: 0;
+}
+.record-content {
+  font-size: 0.95rem;
+  color: var(--text);
+  word-break: break-word;
+}
+.record-actions {
+  flex-shrink: 0;
+  display: flex;
+  gap: 4px;
+}
+.btn-icon {
+  width: 32px; height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-light);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: all 0.15s;
+}
+.btn-icon:hover {
+  background: var(--accent);
+  color: var(--primary-dark);
+}
+.btn-icon.danger:hover {
+  background: #FFE0E0;
+  color: #D44;
+}
+
+/* ===== INLINE EDIT ===== */
+.edit-inline {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+.edit-inline-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.edit-inline select,
+.edit-inline input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #FFD4D9;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  background: #fff;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.edit-inline select:focus,
+.edit-inline input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255,107,138,0.15);
+}
+.edit-inline-actions {
+  display: flex;
+  gap: 6px;
+}
+.btn-sm {
+  padding: 4px 14px;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.btn-sm.primary {
+  background: var(--primary);
+  color: #fff;
+}
+.btn-sm.primary:hover {
+  background: var(--primary-dark);
+}
+.btn-sm.cancel {
+  background: #F0E0E4;
+  color: var(--text-secondary);
+}
+.btn-sm.cancel:hover {
+  background: #E5D0D6;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-state {
+  text-align: center;
+  padding: 28px 10px;
+  color: var(--text-light);
+}
+.empty-state .emoji {
+  font-size: 2.4rem;
+  display: block;
+  margin-bottom: 8px;
+}
+.empty-state p {
+  font-size: 0.92rem;
+}
+
+/* ===== ADD FORM ===== */
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+.form-row select,
+.form-row input,
+.form-row textarea {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1.5px solid #FFDEE3;
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  font-family: inherit;
+  background: #FFFAFB;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.form-row select:focus,
+.form-row input:focus,
+.form-row textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255,107,138,0.12);
+}
+.form-row textarea {
+  resize: vertical;
+  min-height: 44px;
+}
+.btn {
+  padding: 10px 28px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(255,107,138,0.25);
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(255,107,138,0.35);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* ===== ACTIVITIES ===== */
+.activity-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.activity-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px 6px 16px;
+  border-radius: 20px;
+  background: #FFF5F7;
+  border: 1.5px solid var(--accent);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text);
+  transition: all 0.15s;
+}
+.activity-tag:hover {
+  background: #FFEEF0;
+  border-color: var(--primary-light);
+}
+.activity-tag .tag-actions {
+  display: flex;
+  gap: 2px;
+  margin-left: 4px;
+}
+.activity-tag .tag-btn {
+  width: 24px; height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: var(--text-light);
+  transition: all 0.15s;
+}
+.activity-tag .tag-btn:hover {
+  background: var(--accent);
+  color: var(--primary-dark);
+}
+.activity-tag .tag-btn.del:hover {
+  background: #FFE0E0;
+  color: #D44;
+}
+.activity-tag .tag-edit-input {
+  width: 80px;
+  padding: 2px 6px;
+  border: 1px solid var(--primary);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  outline: none;
+}
+
+/* ===== HISTORY ===== */
+.history-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.history-nav-btn {
+  width: 38px; height: 38px;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  background: #FFFAFB;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--primary);
+  transition: all 0.15s;
+}
+.history-nav-btn:hover {
+  background: var(--accent);
+  border-color: var(--primary-light);
+}
+.history-nav-date {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.history-date-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+  justify-content: center;
+}
+.history-date-chip {
+  padding: 4px 14px;
+  border-radius: 16px;
+  background: #FFF5F7;
+  border: 1px solid var(--accent);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.history-date-chip:hover {
+  background: var(--accent);
+  border-color: var(--primary-light);
+  color: var(--primary-dark);
+}
+.history-date-chip.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+/* ===== CONFIRM OVERLAY ===== */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+.overlay.show { display: flex; }
+.overlay-box {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 28px 24px 20px;
+  max-width: 340px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+.overlay-box p {
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+.overlay-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* ===== TOAST ===== */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  pointer-events: none;
+}
+.toast {
+  padding: 10px 28px;
+  border-radius: var(--radius-sm);
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 4px 16px rgba(255,107,138,0.3);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .header { padding: 28px 16px 24px; }
+  .header-title { font-size: 1.6rem; }
+  .card { padding: 18px 14px; }
+  .record-item { flex-wrap: wrap; }
+  .record-actions { margin-left: auto; }
+  .form-row { flex-direction: column; }
+  .form-row select,
+  .form-row input,
+  .form-row textarea { width: 100%; }
+  .history-nav { flex-wrap: wrap; justify-content: center; }
+  .btn { width: 100%; text-align: center; }
+  .edit-inline-row { flex-direction: column; }
+  .edit-inline-row select,
+  .edit-inline-row input { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <div class="header-inner">
+    <h1 class="header-title">
+      <span class="heart-deco">❤</span>
+      主人小刘与女仆Cyy
+      <span class="heart-deco">❤</span>
+    </h1>
+    <p class="header-date" id="headerDate"></p>
+    <div class="header-deco">🌸 ✿ 🌸</div>
+  </div>
+</header>
+
+<!-- ===== TOAST ===== -->
+<div class="toast-container" id="toastContainer">
+  <div class="toast" id="toastEl"></div>
+</div>
+
+<!-- ===== CONFIRM OVERLAY ===== -->
+<div class="overlay" id="confirmOverlay">
+  <div class="overlay-box">
+    <p id="confirmMsg">确定要删除吗？</p>
+    <div class="overlay-actions">
+      <button class="btn-sm cancel" id="confirmCancel">取消</button>
+      <button class="btn-sm primary" id="confirmOk">确定</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MAIN ===== -->
+<div class="container">
+
+  <!-- Today Section -->
+  <section class="card" id="todaySection">
+    <div class="card-header">
+      <div class="card-title"><span class="icon">📝</span> 今日打卡</div>
+    </div>
+    <div id="todayRecords"></div>
+    <div style="margin-top:14px;padding-top:14px;border-top:1px dashed #FFE0E4;">
+      <div class="add-form" id="addForm">
+        <div class="form-row">
+          <select id="addActivitySelect" style="flex:0 0 auto;min-width:100px;"></select>
+          <input type="text" id="addContentInput" placeholder="今天做了什么？写下来吧 ✨">
+        </div>
+        <button class="btn btn-primary" id="addBtn">❤ 记录今天</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Activities Section -->
+  <section class="card" id="activitiesSection">
+    <div class="card-header">
+      <div class="card-title"><span class="icon">🏷️</span> 活动管理</div>
+    </div>
+    <div id="activityList" class="activity-list"></div>
+    <div style="padding-top:10px;">
+      <div class="add-form" id="addActivityForm">
+        <div class="form-row">
+          <input type="text" id="newActivityInput" placeholder="输入新活动名称..." maxlength="20">
+          <button class="btn btn-primary" id="addActivityBtn">添加</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- History Section -->
+  <section class="card" id="historySection">
+    <div class="card-header">
+      <div class="card-title"><span class="icon">📖</span> 历史足迹</div>
+    </div>
+    <div class="history-nav">
+      <button class="history-nav-btn" id="histPrev">◀</button>
+      <span class="history-nav-date" id="histDateLabel"></span>
+      <button class="history-nav-btn" id="histNext">▶</button>
+    </div>
+    <div id="historyDateChips"></div>
+    <div id="historyRecords"></div>
+  </section>
+
+</div>
+
+<script>
+// ===== DATA LAYER =====
+var STORAGE_KEY = 'love_checkin_data';
+
+function getDefaultData() {
+  return {
+    activities: [
+      { id: 'a1', title: '约会' },
+      { id: 'a2', title: '吃饭' },
+      { id: 'a3', title: '运动' },
+      { id: 'a4', title: '读书' },
+    ],
+    records: {}
+  };
+}
+
+var data = null;
+var editingRecordKey = null;
+var editingActivityId = null;
+var historyDate = null;
+var confirmResolve = null;
+
+function loadData() {
+  try {
+    var raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      data = JSON.parse(raw);
+      if (!data.activities) data.activities = getDefaultData().activities;
+      if (!data.records) data.records = {};
+    } else {
+      data = getDefaultData();
+      saveData();
+    }
+  } catch (e) {
+    data = getDefaultData();
+    saveData();
+  }
+}
+
+function saveData() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function getTodayStr() {
+  var d = new Date();
+  var y = d.getFullYear();
+  var m = String(d.getMonth() + 1).padStart(2, '0');
+  var day = String(d.getDate()).padStart(2, '0');
+  return y + '-' + m + '-' + day;
+}
+
+function formatDateCN(dateStr) {
+  var parts = dateStr.split('-');
+  var d = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+  var weekdays = ['日', '一', '二', '三', '四', '五', '六'];
+  return parseInt(parts[0]) + '年' + parseInt(parts[1]) + '月' + parseInt(parts[2]) + '日 星期' + weekdays[d.getDay()];
+}
+
+function getRecordsForDate(dateStr) {
+  return data.records[dateStr] || [];
+}
+
+function setRecordsForDate(dateStr, records) {
+  if (records.length === 0) {
+    delete data.records[dateStr];
+  } else {
+    data.records[dateStr] = records;
+  }
+  saveData();
+}
+
+function getActivity(id) {
+  return data.activities.find(function(a) { return a.id === id; });
+}
+
+function getAllDatesWithRecords() {
+  return Object.keys(data.records).sort();
+}
+
+// ===== TOAST =====
+var toastTimer = null;
+function showToast(msg) {
+  var el = document.getElementById('toastEl');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function() { el.classList.remove('show'); }, 2000);
+}
+
+// ===== CONFIRM =====
+function showConfirm(msg) {
+  return new Promise(function(resolve) {
+    document.getElementById('confirmMsg').textContent = msg;
+    document.getElementById('confirmOverlay').classList.add('show');
+    confirmResolve = resolve;
+  });
+}
+
+document.getElementById('confirmOk').addEventListener('click', function() {
+  document.getElementById('confirmOverlay').classList.remove('show');
+  if (confirmResolve) confirmResolve(true);
+});
+document.getElementById('confirmCancel').addEventListener('click', function() {
+  document.getElementById('confirmOverlay').classList.remove('show');
+  if (confirmResolve) confirmResolve(false);
+});
+document.getElementById('confirmOverlay').addEventListener('click', function(e) {
+  if (e.target === e.currentTarget) {
+    document.getElementById('confirmOverlay').classList.remove('show');
+    if (confirmResolve) confirmResolve(false);
+  }
+});
+
+// ===== RENDER FUNCTIONS =====
+
+function renderHeaderDate() {
+  document.getElementById('headerDate').textContent = formatDateCN(getTodayStr());
+}
+
+function renderTodayRecords() {
+  var today = getTodayStr();
+  var records = getRecordsForDate(today);
+  var container = document.getElementById('todayRecords');
+
+  if (records.length === 0) {
+    container.innerHTML = '<div class="empty-state"><span class="emoji">💑</span><p>今天还没有记录呢～一起做点什么吧！</p></div>';
+    return;
+  }
+
+  var html = '';
+  for (var i = 0; i < records.length; i++) {
+    var rec = records[i];
+    var activity = getActivity(rec.activityId);
+    var title = activity ? activity.title : '未知活动';
+    var isEditing = editingRecordKey && editingRecordKey.date === today && editingRecordKey.index === i;
+
+    if (isEditing) {
+      html += renderRecordEditForm(rec, i, today);
+    } else {
+      html += '<div class="record-item">'
+        + '<span class="record-badge">' + escapeHtml(title) + '</span>'
+        + '<div class="record-body"><div class="record-content">' + escapeHtml(rec.content) + '</div></div>'
+        + '<div class="record-actions">'
+        + '<button class="btn-icon" onclick="startEditRecord(\'' + today + '\',' + i + ')" title="编辑">✎</button>'
+        + '<button class="btn-icon danger" onclick="deleteRecord(\'' + today + '\',' + i + ')" title="删除">✕</button>'
+        + '</div></div>';
+    }
+  }
+  container.innerHTML = html;
+  populateActivitySelect();
+}
+
+function renderRecordEditForm(rec, idx, date) {
+  var opts = '';
+  for (var j = 0; j < data.activities.length; j++) {
+    var a = data.activities[j];
+    opts += '<option value="' + a.id + '"' + (a.id === rec.activityId ? ' selected' : '') + '>' + escapeHtml(a.title) + '</option>';
+  }
+  return '<div class="record-item"><div class="edit-inline" style="width:100%;">'
+    + '<div class="edit-inline-row">'
+    + '<select id="editActSelect">' + opts + '</select>'
+    + '<input type="text" id="editContentInput" value="' + escapeHtml(rec.content) + '" placeholder="具体内容">'
+    + '</div>'
+    + '<div class="edit-inline-actions">'
+    + '<button class="btn-sm primary" onclick="saveEditRecord(\'' + date + '\',' + idx + ')">保存</button>'
+    + '<button class="btn-sm cancel" onclick="cancelEditRecord()">取消</button>'
+    + '</div></div></div>';
+}
+
+function renderHistory() {
+  var dates = getAllDatesWithRecords();
+  var chipsContainer = document.getElementById('historyDateChips');
+  var recordsContainer = document.getElementById('historyRecords');
+  var label = document.getElementById('histDateLabel');
+
+  if (dates.length === 0) {
+    chipsContainer.innerHTML = '';
+    label.textContent = '暂无历史记录';
+    recordsContainer.innerHTML = '<div class="empty-state"><span class="emoji">📖</span><p>还没有历史记录，快去打卡吧～</p></div>';
+    return;
+  }
+
+  if (!historyDate || dates.indexOf(historyDate) === -1) {
+    historyDate = dates[dates.length - 1];
+  }
+
+  label.textContent = formatDateCN(historyDate);
+
+  var chipHtml = '';
+  for (var i = 0; i < dates.length; i++) {
+    var d = dates[i];
+    chipHtml += '<span class="history-date-chip' + (d === historyDate ? ' active' : '') + '" onclick="selectHistoryDate(\'' + d + '\')">' + d.slice(5) + '</span>';
+  }
+  chipsContainer.innerHTML = chipHtml;
+
+  var recs = getRecordsForDate(historyDate);
+  if (recs.length === 0) {
+    recordsContainer.innerHTML = '<div class="empty-state"><span class="emoji">📄</span><p>这一天没有记录</p></div>';
+  } else {
+    var recHtml = '';
+    for (var i = 0; i < recs.length; i++) {
+      var rec = recs[i];
+      var activity = getActivity(rec.activityId);
+      var title = activity ? activity.title : '未知活动';
+      recHtml += '<div class="record-item">'
+        + '<span class="record-badge">' + escapeHtml(title) + '</span>'
+        + '<div class="record-body"><div class="record-content">' + escapeHtml(rec.content) + '</div></div>'
+        + '</div>';
+    }
+    recordsContainer.innerHTML = recHtml;
+  }
+}
+
+function renderActivities() {
+  var container = document.getElementById('activityList');
+  if (data.activities.length === 0) {
+    container.innerHTML = '<div style="color:var(--text-light);font-size:0.9rem;">还没有活动类别，添加一个吧～</div>';
+    return;
+  }
+
+  var html = '';
+  for (var i = 0; i < data.activities.length; i++) {
+    var a = data.activities[i];
+    if (editingActivityId === a.id) {
+      html += '<div class="activity-tag">'
+        + '<input class="tag-edit-input" type="text" id="editActNameInput" value="' + escapeHtml(a.title) + '" maxlength="20">'
+        + '<div class="tag-actions">'
+        + '<button class="tag-btn" onclick="saveEditActivity(\'' + a.id + '\')" title="保存">✓</button>'
+        + '<button class="tag-btn" onclick="cancelEditActivity()" title="取消">✕</button>'
+        + '</div></div>';
+    } else {
+      html += '<div class="activity-tag">'
+        + '<span>' + escapeHtml(a.title) + '</span>'
+        + '<div class="tag-actions">'
+        + '<button class="tag-btn" onclick="startEditActivity(\'' + a.id + '\')" title="编辑">✎</button>'
+        + '<button class="tag-btn del" onclick="deleteActivity(\'' + a.id + '\')" title="删除">✕</button>'
+        + '</div></div>';
+    }
+  }
+  container.innerHTML = html;
+}
+
+function populateActivitySelect() {
+  var sel = document.getElementById('addActivitySelect');
+  var html = '';
+  for (var i = 0; i < data.activities.length; i++) {
+    html += '<option value="' + data.activities[i].id + '">' + escapeHtml(data.activities[i].title) + '</option>';
+  }
+  sel.innerHTML = html;
+}
+
+function escapeHtml(str) {
+  var div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// ===== ACTION FUNCTIONS =====
+
+function addRecord() {
+  var sel = document.getElementById('addActivitySelect');
+  var input = document.getElementById('addContentInput');
+  var activityId = sel.value;
+  var content = input.value.trim();
+  if (!content) {
+    showToast('请输入具体内容 💕');
+    return;
+  }
+  var today = getTodayStr();
+  var records = getRecordsForDate(today);
+  records.push({ activityId: activityId, content: content });
+  setRecordsForDate(today, records);
+  input.value = '';
+  showToast('记录成功 ❤');
+  renderTodayRecords();
+  renderHistory();
+}
+
+function startEditRecord(date, index) {
+  editingRecordKey = { date: date, index: index };
+  renderTodayRecords();
+}
+
+function saveEditRecord(date, index) {
+  var sel = document.getElementById('editActSelect');
+  var input = document.getElementById('editContentInput');
+  var activityId = sel.value;
+  var content = input.value.trim();
+  if (!content) {
+    showToast('内容不能为空哦 💕');
+    return;
+  }
+  var records = getRecordsForDate(date);
+  if (records[index]) {
+    records[index] = { activityId: activityId, content: content };
+    setRecordsForDate(date, records);
+  }
+  editingRecordKey = null;
+  showToast('已更新 ❤');
+  renderTodayRecords();
+  renderHistory();
+}
+
+function cancelEditRecord() {
+  editingRecordKey = null;
+  renderTodayRecords();
+}
+
+function deleteRecord(date, index) {
+  showConfirm('确定要删除这条记录吗？').then(function(ok) {
+    if (!ok) return;
+    var records = getRecordsForDate(date);
+    records.splice(index, 1);
+    setRecordsForDate(date, records);
+    showToast('已删除');
+    renderTodayRecords();
+    renderHistory();
+  });
+}
+
+function addActivity() {
+  var input = document.getElementById('newActivityInput');
+  var title = input.value.trim();
+  if (!title) {
+    showToast('请输入活动名称 🏷️');
+    return;
+  }
+  for (var i = 0; i < data.activities.length; i++) {
+    if (data.activities[i].title === title) {
+      showToast('这个活动已经存在啦～');
+      return;
+    }
+  }
+  var id = 'a' + Date.now();
+  data.activities.push({ id: id, title: title });
+  saveData();
+  input.value = '';
+  showToast('添加成功 🎉');
+  renderActivities();
+  populateActivitySelect();
+}
+
+function startEditActivity(id) {
+  editingActivityId = id;
+  renderActivities();
+}
+
+function saveEditActivity(id) {
+  var input = document.getElementById('editActNameInput');
+  var title = input.value.trim();
+  if (!title) {
+    showToast('名称不能为空 🏷️');
+    return;
+  }
+  for (var i = 0; i < data.activities.length; i++) {
+    if (data.activities[i].id === id) {
+      data.activities[i].title = title;
+      break;
+    }
+  }
+  saveData();
+  editingActivityId = null;
+  showToast('已更新');
+  renderActivities();
+  renderTodayRecords();
+  renderHistory();
+  populateActivitySelect();
+}
+
+function cancelEditActivity() {
+  editingActivityId = null;
+  renderActivities();
+}
+
+function deleteActivity(id) {
+  var activity = getActivity(id);
+  if (!activity) return;
+
+  var used = false;
+  for (var date in data.records) {
+    if (data.records[date].some(function(r) { return r.activityId === id; })) {
+      used = true;
+      break;
+    }
+  }
+
+  var msg = '确定要删除「' + activity.title + '」吗？';
+  if (used) {
+    msg = '「' + activity.title + '」已被使用，删除后相关记录会变成"未知活动"。确定删除吗？';
+  }
+
+  showConfirm(msg).then(function(ok) {
+    if (!ok) return;
+    var idx = -1;
+    for (var i = 0; i < data.activities.length; i++) {
+      if (data.activities[i].id === id) { idx = i; break; }
+    }
+    if (idx >= 0) data.activities.splice(idx, 1);
+    saveData();
+    showToast('已删除');
+    editingActivityId = null;
+    renderActivities();
+    renderTodayRecords();
+    renderHistory();
+    populateActivitySelect();
+  });
+}
+
+function selectHistoryDate(dateStr) {
+  historyDate = dateStr;
+  renderHistory();
+}
+
+function historyPrev() {
+  var dates = getAllDatesWithRecords();
+  if (dates.length === 0) return;
+  var idx = dates.indexOf(historyDate);
+  if (idx > 0) {
+    historyDate = dates[idx - 1];
+    renderHistory();
+  } else {
+    showToast('已经是第一条了');
+  }
+}
+
+function historyNext() {
+  var dates = getAllDatesWithRecords();
+  if (dates.length === 0) return;
+  var idx = dates.indexOf(historyDate);
+  if (idx < dates.length - 1) {
+    historyDate = dates[idx + 1];
+    renderHistory();
+  } else {
+    showToast('已经是最后一条了');
+  }
+}
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded', function() {
+  loadData();
+  renderHeaderDate();
+  populateActivitySelect();
+  renderTodayRecords();
+  renderActivities();
+  renderHistory();
+
+  document.getElementById('addBtn').addEventListener('click', addRecord);
+  document.getElementById('addActivityBtn').addEventListener('click', addActivity);
+  document.getElementById('histPrev').addEventListener('click', historyPrev);
+  document.getElementById('histNext').addEventListener('click', historyNext);
+
+  document.getElementById('addContentInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') addRecord();
+  });
+  document.getElementById('newActivityInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') addActivity();
+  });
+});
+</script>
+</body>
+</html>
